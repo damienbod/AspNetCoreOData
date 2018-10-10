@@ -1,31 +1,19 @@
-using Microsoft.Spatial;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreOData.Service.Database
 {
-    [Table("Person.EmailAddress")]
     public partial class EmailAddress
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int BusinessEntityID { get; set; }
-
+        public int BusinessEntityId { get; set; }
         [Key]
-        [Column(Order = 1)]
-        public int EmailAddressID { get; set; }
-
-        [Column("EmailAddress")]
-        [StringLength(50)]
+        public int EmailAddressId { get; set; }
         public string EmailAddress1 { get; set; }
+        public Guid Rowguid { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        public Guid rowguid { get; set; }
-
-        //public DateTime ModifiedDate { get; set; }
-
-        public virtual Person Person { get; set; }
+        public virtual Person BusinessEntity { get; set; }
     }
 }

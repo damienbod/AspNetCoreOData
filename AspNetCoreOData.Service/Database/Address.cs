@@ -1,46 +1,29 @@
-using Microsoft.Spatial;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreOData.Service.Database
 {
-    [Table("Person.Address")]
     public partial class Address
     {
         public Address()
         {
             BusinessEntityAddress = new HashSet<BusinessEntityAddress>();
+            SalesOrderHeaderBillToAddress = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaderShipToAddress = new HashSet<SalesOrderHeader>();
         }
 
-        public int AddressID { get; set; }
-
-        [Required]
-        [StringLength(60)]
+        public int AddressId { get; set; }
         public string AddressLine1 { get; set; }
-
-        [StringLength(60)]
         public string AddressLine2 { get; set; }
-
-        [Required]
-        [StringLength(30)]
         public string City { get; set; }
-
-        public int StateProvinceID { get; set; }
-
-        [Required]
-        [StringLength(15)]
+        public int StateProvinceId { get; set; }
         public string PostalCode { get; set; }
-
-        public Geography SpatialLocation { get; set; }
-
-        public Guid rowguid { get; set; }
-
-        //public DateTime ModifiedDate { get; set; }
+        public Guid Rowguid { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         public virtual StateProvince StateProvince { get; set; }
-
         public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddress { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderShipToAddress { get; set; }
     }
 }

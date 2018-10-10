@@ -31,7 +31,7 @@ namespace AspNetCoreOData.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DomainModelContext>(options =>
+            services.AddDbContext<AdventureWorks2016Context>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddOData();

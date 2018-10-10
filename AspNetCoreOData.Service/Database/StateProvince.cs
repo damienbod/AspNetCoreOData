@@ -1,43 +1,28 @@
-using Microsoft.Spatial;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreOData.Service.Database
 {
-    [Table("Person.StateProvince")]
     public partial class StateProvince
     {
         public StateProvince()
         {
             Address = new HashSet<Address>();
+            SalesTaxRate = new HashSet<SalesTaxRate>();
         }
 
-        public int StateProvinceID { get; set; }
-
-        [Required]
-        [StringLength(3)]
+        public int StateProvinceId { get; set; }
         public string StateProvinceCode { get; set; }
-
-        [Required]
-        [StringLength(3)]
         public string CountryRegionCode { get; set; }
-
-        public bool IsOnlyStateProvinceFlag { get; set; }
-
-        [Required]
-        [StringLength(50)]
+        public bool? IsOnlyStateProvinceFlag { get; set; }
         public string Name { get; set; }
+        public int TerritoryId { get; set; }
+        public Guid Rowguid { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        public int TerritoryID { get; set; }
-
-        public Guid rowguid { get; set; }
-
-        //public DateTime ModifiedDate { get; set; }
-
+        public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
+        public virtual SalesTerritory Territory { get; set; }
         public virtual ICollection<Address> Address { get; set; }
-
-        public virtual CountryRegion CountryRegion { get; set; }
+        public virtual ICollection<SalesTaxRate> SalesTaxRate { get; set; }
     }
 }

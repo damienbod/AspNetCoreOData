@@ -1,37 +1,22 @@
-using Microsoft.Spatial;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreOData.Service.Database
 {
-    [Table("Person.BusinessEntityAddress")]
     public partial class BusinessEntityAddress
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int BusinessEntityID { get; set; }
-
+        public int BusinessEntityId { get; set; }
         [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AddressID { get; set; }
-
+        public int AddressId { get; set; }
         [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AddressTypeID { get; set; }
-
-        public Guid rowguid { get; set; }
-
-        //public DateTimeOffset ModifiedDate { get; set; }
+        public int AddressTypeId { get; set; }
+        public Guid Rowguid { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         public virtual Address Address { get; set; }
-
         public virtual AddressType AddressType { get; set; }
-
         public virtual BusinessEntity BusinessEntity { get; set; }
     }
 }

@@ -1,33 +1,18 @@
-using Microsoft.Spatial;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AspNetCoreOData.Service.Database
 {
-    [Table("Person.PersonPhone")]
     public partial class PersonPhone
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int BusinessEntityID { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [StringLength(25)]
+        public int BusinessEntityId { get; set; }
         public string PhoneNumber { get; set; }
-
         [Key]
-        [Column(Order = 2)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PhoneNumberTypeID { get; set; }
+        public int PhoneNumberTypeId { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
-        //public DateTime ModifiedDate { get; set; }
-
-        public virtual Person Person { get; set; }
-
+        public virtual Person BusinessEntity { get; set; }
         public virtual PhoneNumberType PhoneNumberType { get; set; }
     }
 }
