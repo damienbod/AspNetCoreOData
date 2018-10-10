@@ -12,11 +12,11 @@ namespace  AspNetCoreOData.Service.Controllers
     [ODataRoutePrefix("ContactType")]
     public class ContactTypeController : ODataController
     {
-        private DomainModelContext _db;
+        private AdventureWorks2016Context _db;
 
-        public ContactTypeController(DomainModelContext domainModelContext)
+        public ContactTypeController(AdventureWorks2016Context AdventureWorks2016Context)
         {
-            _db = domainModelContext;
+            _db = AdventureWorks2016Context;
         }
 
         [ODataRoute()]
@@ -59,7 +59,7 @@ namespace  AspNetCoreOData.Service.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (key != contactType.ContactTypeID)
+            if (key != contactType.ContactTypeId)
             {
                 return BadRequest();
             }
@@ -75,7 +75,7 @@ namespace  AspNetCoreOData.Service.Controllers
         [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IActionResult Delete([FromODataUri] int key)
         {
-            var entityInDb = _db.ContactType.SingleOrDefault(t => t.ContactTypeID == key);
+            var entityInDb = _db.ContactType.SingleOrDefault(t => t.ContactTypeId == key);
             _db.ContactType.Remove(entityInDb);
             _db.SaveChanges();
 
@@ -92,7 +92,7 @@ namespace  AspNetCoreOData.Service.Controllers
                 return BadRequest(ModelState);
             }
 
-            var contactType = _db.ContactType.Single(t => t.ContactTypeID == key);
+            var contactType = _db.ContactType.Single(t => t.ContactTypeId == key);
             delta.Patch(contactType);
             _db.SaveChanges();
             return Updated(contactType);

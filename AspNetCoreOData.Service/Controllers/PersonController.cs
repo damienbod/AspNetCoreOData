@@ -11,11 +11,11 @@ namespace  AspNetCoreOData.Service.Controllers
     [ODataRoutePrefix("Person")]
     public class PersonController : ODataController
     {
-        private DomainModelContext _db;
+        private AdventureWorks2016Context _db;
 
-        public PersonController(DomainModelContext domainModelContext)
+        public PersonController(AdventureWorks2016Context AdventureWorks2016Context)
         {
-            _db = domainModelContext;
+            _db = AdventureWorks2016Context;
         }
 
         [ODataRoute]

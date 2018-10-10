@@ -7,11 +7,11 @@ namespace  AspNetCoreOData.Service.Controllers
 {
     public class BusinessEntityContactController : ODataController
     {
-        private DomainModelContext _db;
+        private AdventureWorks2016Context _db;
 
-        public BusinessEntityContactController(DomainModelContext domainModelContext)
+        public BusinessEntityContactController(AdventureWorks2016Context AdventureWorks2016Context)
         {
-            _db = domainModelContext;
+            _db = AdventureWorks2016Context;
         }
 
         [EnableQuery(PageSize = 20)]

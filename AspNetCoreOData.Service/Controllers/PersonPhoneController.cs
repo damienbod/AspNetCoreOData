@@ -9,11 +9,11 @@ namespace  AspNetCoreOData.Service.Controllers
 {
     public class PersonPhoneController : ODataController
     {
-        private DomainModelContext _db;
+        private AdventureWorks2016Context _db;
 
-        public PersonPhoneController(DomainModelContext domainModelContext)
+        public PersonPhoneController(AdventureWorks2016Context AdventureWorks2016Context)
         {
-            _db = domainModelContext;
+            _db = AdventureWorks2016Context;
         }
 
         private static readonly ODataValidationSettings _validationSettings = new ODataValidationSettings();

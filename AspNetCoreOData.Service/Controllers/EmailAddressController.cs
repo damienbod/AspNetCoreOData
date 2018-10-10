@@ -7,11 +7,11 @@ namespace  AspNetCoreOData.Service.Controllers
 {
     public class EmailAddressController : ODataController
     {
-        private DomainModelContext _db;
+        private AdventureWorks2016Context _db;
 
-        public EmailAddressController(DomainModelContext domainModelContext)
+        public EmailAddressController(AdventureWorks2016Context AdventureWorks2016Context)
         {
-            _db = domainModelContext;
+            _db = AdventureWorks2016Context;
         }
 
         [EnableQuery(PageSize = 20)]
