@@ -6,6 +6,8 @@ Scaffold-DbContext "Data Source=N866\sqlexpress;Initial Catalog=AdventureWorks20
 
 https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks
 
+https://docs.microsoft.com/en-us/ef/core/get-started/aspnetcore/existing-db
+
 ## Links
 
 https://blogs.msdn.microsoft.com/odatateam/2018/07/03/asp-net-core-odata-now-available/
