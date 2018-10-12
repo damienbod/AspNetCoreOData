@@ -16,8 +16,7 @@ namespace StsServerIdentity
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email(),
-                new IdentityResource("my_identity_scope",new []{ "role", "admin", "user" } )
+                new IdentityResources.Email()
             };
         }
 
