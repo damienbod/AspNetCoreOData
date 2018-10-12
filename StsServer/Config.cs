@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ namespace StsServerIdentity
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
-                new IdentityResources.Email()
+                new IdentityResources.Email(),
+                new IdentityResource("my_identity_scope",new []{ "role", "admin", "user" } )
             };
         }
 
@@ -23,67 +25,71 @@ namespace StsServerIdentity
         {
             return new List<ApiResource>
             {
-                new ApiResource("dataEventRecords")
+                new ApiResource("scope_used_for_hybrid_flow")
                 {
                     ApiSecrets =
                     {
-                        new Secret("dataEventRecordsSecret".Sha256())
+                        new Secret("hybrid_flow_secret".Sha256())
+                    },
+                    UserClaims = { "role", "admin", "user", "some_api" }
+                },
+                new ApiResource("ProtectedApi")
+                {
+                    DisplayName = "API protected",
+                    ApiSecrets =
+                    {
+                        new Secret("api_in_protected_zone_secret".Sha256())
                     },
                     Scopes =
                     {
                         new Scope
                         {
-                            Name = "dataeventrecords",
-                            DisplayName = "Scope for the dataEventRecords ApiResource"
+                            Name = "scope_used_for_api_in_protected_zone",
+                            ShowInDiscoveryDocument = false
                         }
                     },
-                    UserClaims = { "role", "admin", "user", "dataEventRecords", "dataEventRecords.admin", "dataEventRecords.user" }
+                    UserClaims = { "role", "admin", "user", "safe_zone_api" }
                 }
             };
         }
 
-        // clients want to access resources (aka scopes)
-        public static IEnumerable<Client> GetClients(IConfigurationSection stsConfig)
+        public static IEnumerable<Client> GetClients(IConfigurationSection authConfigurations)
         {
-            var angularClientIdTokenOnlyUrl = stsConfig["AngularClientIdTokenOnlyUrl"];
-            var angularClientUrl = stsConfig["AngularClientUrl"];
-            // TODO use configs in app
-
-            // client credentials client
             return new List<Client>
             {
                 new Client
                 {
-                    ClientName = "angularclient",
-                    ClientId = "angularclient",
-                    AccessTokenType = AccessTokenType.Reference,
-                    AccessTokenLifetime = 330,// 330 seconds, default 60 minutes
-                    IdentityTokenLifetime = 30,
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    AllowAccessTokensViaBrowser = true,
-                    RedirectUris = new List<string>
-                    {
-                        "https://localhost:44311",
-                        "https://localhost:44311/silent-renew.html"
-
+                    ClientName = "hybridclient",
+                    ClientId = "hybridclient",
+                    ClientSecrets = {new Secret("hybrid_flow_secret".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowOfflineAccess = true,
+                    RedirectUris = {
+                        "https://localhost:44388/signin-oidc"
                     },
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        "https://localhost:44311/unauthorized",
-                        "https://localhost:44311"
+                    PostLogoutRedirectUris = {
+                        "https://localhost:44388/signout-callback-oidc"
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44311",
-                        "http://localhost:44311"
+                        "https://localhost:44388/"
                     },
                     AllowedScopes = new List<string>
                     {
-                        "openid",
-                        "role",
-                        "profile",
-                        "email"
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "scope_used_for_hybrid_flow",
+                        "role"
                     }
+                },
+                new Client
+                {
+                    ClientId = "ProtectedApi",
+                    ClientName = "ProtectedApi",
+                    ClientSecrets = new List<Secret> { new Secret { Value = "api_in_protected_zone_secret".Sha256() } },
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone" }
                 }
             };
         }

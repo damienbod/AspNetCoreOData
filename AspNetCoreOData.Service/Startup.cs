@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreOData.Service.Database;
 using AspNetCoreOData.Service.Models;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,23 @@ namespace AspNetCoreOData.Service
         {
             services.AddDbContext<AdventureWorks2016Context>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            var stsServer = Configuration["StsServer"];
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+              .AddIdentityServerAuthentication(options =>
+              {
+                  options.Authority = "https://localhost:44318";
+                  options.ApiName = "ProtectedApi";
+                  options.ApiSecret = "api_in_protected_zone_secret";
+                  options.RequireHttpsMetadata = true;
+              });
+
+            services.AddAuthorization(options =>
+                options.AddPolicy("protectedScope", policy =>
+                {
+                    policy.RequireClaim("scope", "scope_used_for_api_in_protected_zone");
+                })
+            );
 
             services.AddOData();
             services.AddODataQueryFilter();

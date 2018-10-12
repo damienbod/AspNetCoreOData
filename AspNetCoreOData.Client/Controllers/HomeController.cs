@@ -9,16 +9,18 @@ using Microsoft.AspNetCore.Authentication;
 using Simple.OData.Client;
 using System.Net.Http;
 using AspNetCoreOData.Service.Database;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreOData.Client.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public async Task<IActionResult> Index()
         {
-            //var accessToken = HttpContext.GetTokenAsync("access_token").Result;
-            //var client = new ODataClient(SetODataToken("https://localhost:44345/odata", accessToken));
-            var client = new ODataClient("https://localhost:44345/odata");
+            var accessToken = HttpContext.GetTokenAsync("access_token").Result;
+            var client = new ODataClient(SetODataToken("https://localhost:44345/odata", accessToken));
+            //var client = new ODataClient("https://localhost:44345/odata");
 
             var persons = await client.For<Person>()
                     .Expand(rr => rr.EmailAddress)
