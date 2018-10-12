@@ -74,14 +74,6 @@ namespace StsServerIdentity
                         "ScopeAspNetCoreODataServiceApi",
                         "role"
                     }
-                },
-                new Client
-                {
-                    ClientId = "AspNetCoreODataServiceApi",
-                    ClientName = "AspNetCoreODataServiceApi",
-                    ClientSecrets = new List<Secret> { new Secret { Value = "AspNetCoreODataServiceApiSecret".Sha256() } },
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new List<string> { "ScopeAspNetCoreODataServiceApi" }
                 }
             };
         }
