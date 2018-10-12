@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AspNetCoreOData.Service.Database;
 using AspNetCoreOData.Service.Models;
 using IdentityServer4.AccessTokenValidation;
@@ -9,13 +6,10 @@ using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.OData.Edm;
 
 namespace AspNetCoreOData.Service
@@ -57,10 +51,8 @@ namespace AspNetCoreOData.Service
 
             services.AddMvc(options => 
                 {
-                // https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/
-                // Because conflicts with ODataRouting as of this version
-                // could improve performance though
-                options.EnableEndpointRouting = false;
+                  // https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/
+                  options.EnableEndpointRouting = false;
                 }
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -74,11 +66,13 @@ namespace AspNetCoreOData.Service
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
+
             app.UseMvc(b =>
                    b.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices)
             ));

@@ -5,9 +5,11 @@ using  AspNetCoreOData.Service.Models;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNet.OData.Query;
+using Microsoft.AspNetCore.Authorization;
 
 namespace  AspNetCoreOData.Service.Controllers
 {
+    [Authorize]
     [ODataRoutePrefix("EntityWithEnum")]
     public class EntityWithEnumController : ODataController
     {

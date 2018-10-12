@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using AspNetCoreOData.Service.Database;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreOData.Service.Controllers
 {
+    [Authorize]
     public class AddressController : ODataController
     {
         private AdventureWorks2016Context _db;

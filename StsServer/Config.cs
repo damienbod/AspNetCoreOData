@@ -80,6 +80,7 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
                         "scope_used_for_hybrid_flow",
+                        "scope_used_for_api_in_protected_zone",
                         "role"
                     }
                 },
