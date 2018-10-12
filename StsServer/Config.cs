@@ -51,7 +51,7 @@ namespace StsServerIdentity
             {
                 new Client
                 {
-                    ClientName = "AspNetCoreODataClient",
+                    ClientName = "AspNetCoreOData.Client",
                     ClientId = "AspNetCoreODataClient",
                     ClientSecrets = {new Secret("AspNetCoreODataClientSecret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
