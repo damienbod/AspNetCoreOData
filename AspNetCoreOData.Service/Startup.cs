@@ -34,15 +34,15 @@ namespace AspNetCoreOData.Service
               .AddIdentityServerAuthentication(options =>
               {
                   options.Authority = "https://localhost:44318";
-                  options.ApiName = "ProtectedApi";
-                  options.ApiSecret = "api_in_protected_zone_secret";
+                  options.ApiName = "AspNetCoreODataServiceApi";
+                  options.ApiSecret = "AspNetCoreODataServiceApiSecret";
                   options.RequireHttpsMetadata = true;
               });
 
             services.AddAuthorization(options =>
                 options.AddPolicy("protectedScope", policy =>
                 {
-                    policy.RequireClaim("scope", "scope_used_for_api_in_protected_zone");
+                    policy.RequireClaim("scope", "ScopeAspNetCoreODataServiceApiSecret");
                 })
             );
 

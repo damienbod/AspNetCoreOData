@@ -38,11 +38,10 @@ namespace AspNetCoreOData.Client
                 options.SignInScheme = "Cookies";
                 options.Authority = "https://localhost:44318";
                 options.RequireHttpsMetadata = true;
-                options.ClientId = "hybridclient";
-                options.ClientSecret = "hybrid_flow_secret";
+                options.ClientId = "AspNetCoreODataClient";
+                options.ClientSecret = "AspNetCoreODataClientSecret";
                 options.ResponseType = "code id_token";
-                options.Scope.Add("scope_used_for_hybrid_flow");
-                options.Scope.Add("scope_used_for_api_in_protected_zone");
+                options.Scope.Add("ScopeAspNetCoreODataServiceApi");
                 options.Scope.Add("profile");
                 options.SaveTokens = true;
             });

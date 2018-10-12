@@ -25,30 +25,22 @@ namespace StsServerIdentity
         {
             return new List<ApiResource>
             {
-                new ApiResource("scope_used_for_hybrid_flow")
+                new ApiResource("AspNetCoreODataServiceApi")
                 {
+                    DisplayName = "OData API AspNetCoreOData.Service",
                     ApiSecrets =
                     {
-                        new Secret("hybrid_flow_secret".Sha256())
-                    },
-                    UserClaims = { "role", "admin", "user", "some_api" }
-                },
-                new ApiResource("ProtectedApi")
-                {
-                    DisplayName = "API protected",
-                    ApiSecrets =
-                    {
-                        new Secret("api_in_protected_zone_secret".Sha256())
+                        new Secret("AspNetCoreODataServiceApiSecret".Sha256())
                     },
                     Scopes =
                     {
                         new Scope
                         {
-                            Name = "scope_used_for_api_in_protected_zone",
-                            ShowInDiscoveryDocument = false
+                            Name = "ScopeAspNetCoreODataServiceApi",
+                            DisplayName = "OData API AspNetCoreOData.Service"
                         }
                     },
-                    UserClaims = { "role", "admin", "user", "safe_zone_api" }
+                    UserClaims = { "role", "admin", "user" }
                 }
             };
         }
@@ -59,9 +51,9 @@ namespace StsServerIdentity
             {
                 new Client
                 {
-                    ClientName = "hybridclient",
-                    ClientId = "hybridclient",
-                    ClientSecrets = {new Secret("hybrid_flow_secret".Sha256()) },
+                    ClientName = "AspNetCoreODataClient",
+                    ClientId = "AspNetCoreODataClient",
+                    ClientSecrets = {new Secret("AspNetCoreODataClientSecret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     RedirectUris = {
@@ -79,18 +71,17 @@ namespace StsServerIdentity
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "scope_used_for_hybrid_flow",
-                        "scope_used_for_api_in_protected_zone",
+                        "ScopeAspNetCoreODataServiceApi",
                         "role"
                     }
                 },
                 new Client
                 {
-                    ClientId = "ProtectedApi",
-                    ClientName = "ProtectedApi",
-                    ClientSecrets = new List<Secret> { new Secret { Value = "api_in_protected_zone_secret".Sha256() } },
+                    ClientId = "AspNetCoreODataServiceApi",
+                    ClientName = "AspNetCoreODataServiceApi",
+                    ClientSecrets = new List<Secret> { new Secret { Value = "AspNetCoreODataServiceApiSecret".Sha256() } },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new List<string> { "scope_used_for_api_in_protected_zone" }
+                    AllowedScopes = new List<string> { "ScopeAspNetCoreODataServiceApi" }
                 }
             };
         }
