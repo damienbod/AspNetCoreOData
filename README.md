@@ -4,7 +4,7 @@ https://damienbod.com/2018/10/12/odata-with-asp-net-core/
 
 ## Database
 
-Scaffold-DbContext "Data Source=N866\sqlexpress;Initial Catalog=AdventureWorks2016;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DatabaseNew
+Scaffold-DbContext "Data Source="your_sql_instance"\sqlexpress;Initial Catalog=AdventureWorks2016;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DatabaseNew
 
 https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks
 
