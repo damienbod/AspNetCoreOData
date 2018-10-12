@@ -1,0 +1,11 @@
+﻿@model IEnumerable<AspNetCoreOData.Service.Database.Person>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3>Some People from the ODATA service useing the ODataClient</h3>
+
+@foreach(var person in @Model)
+{
+    <p>@person.FirstName  @person.LastName</p>
+}
