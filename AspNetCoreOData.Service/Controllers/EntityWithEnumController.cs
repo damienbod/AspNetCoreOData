@@ -6,10 +6,11 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace  AspNetCoreOData.Service.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ODataRoutePrefix("EntityWithEnum")]
     public class EntityWithEnumController : ODataController
     {

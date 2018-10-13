@@ -1,14 +1,14 @@
-﻿
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using  AspNetCoreOData.Service.Database;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Query;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace  AspNetCoreOData.Service.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PersonPhoneController : ODataController
     {
         private AdventureWorks2016Context _db;
