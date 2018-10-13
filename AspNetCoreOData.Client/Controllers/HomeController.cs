@@ -51,5 +51,10 @@ namespace AspNetCoreOData.Client.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Logout()
+        {
+            return new SignOutResult(new[] { "Cookies", "OpenIdConnect" });
+        }
     }
 }

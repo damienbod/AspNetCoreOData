@@ -32,7 +32,8 @@ namespace AspNetCoreOData.Client
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie()
+            .AddCookie(options => {
+                })
             .AddOpenIdConnect(options =>
             {
                 options.SignInScheme = "Cookies";
