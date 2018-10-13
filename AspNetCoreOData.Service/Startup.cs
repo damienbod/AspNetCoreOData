@@ -4,6 +4,7 @@ using AspNetCoreOData.Service.Models;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,6 @@ namespace AspNetCoreOData.Service
             services.AddDbContext<AdventureWorks2016Context>(options =>
               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            var stsServer = Configuration["StsServer"];
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
               .AddIdentityServerAuthentication(options =>
               {
@@ -40,9 +40,9 @@ namespace AspNetCoreOData.Service
               });
 
             services.AddAuthorization(options =>
-                options.AddPolicy("protectedScope", policy =>
+                options.AddPolicy("ODataServiceApiPolicy", policy =>
                 {
-                    policy.RequireClaim("scope", "ScopeAspNetCoreODataServiceApiSecret");
+                    policy.RequireClaim("scope", "ScopeAspNetCoreODataServiceApi");
                 })
             );
 

@@ -55,6 +55,8 @@ namespace StsServerIdentity
                     ClientSecrets = {new Secret("AspNetCoreODataClientSecret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
+                    RequireConsent = true,
+                    AccessTokenLifetime = 86400,
                     RedirectUris = {
                         "https://localhost:44388/signin-oidc"
                     },
