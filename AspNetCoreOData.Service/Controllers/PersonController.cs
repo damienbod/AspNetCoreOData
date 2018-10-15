@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace AspNetCoreOData.Service.Controllers
 {
-    [Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // This is removed so that the demo service works in the browser. Not recommended
+    //[Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ODataRoutePrefix("Person")]
     public class PersonController : ODataController
     {
