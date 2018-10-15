@@ -6,9 +6,12 @@ using  AspNetCoreOData.Service.Database;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNet.OData.Query;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace  AspNetCoreOData.Service.Controllers
 {
+    [Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ODataRoutePrefix("ContactType")]
     public class ContactTypeController : ODataController
     {

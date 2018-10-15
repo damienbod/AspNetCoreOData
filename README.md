@@ -1,6 +1,12 @@
 # OData with ASP.NET Core
 
+Part 1: OData with ASP.NET Core
+
 https://damienbod.com/2018/10/12/odata-with-asp-net-core/
+
+Part 2: Using an OData Client with an ASP.NET Core API
+
+
 
 ## Database
 
