@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace AspNetCoreOData.Service.Controllers
 {
-    // This is removed so that the demo service works in the browser. Not recommended
+    // This is removed so that the demo service works in the browser without authorization. Not recommended
     //[Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ODataRoutePrefix("Person")]
     public class PersonController : ODataController
@@ -22,7 +22,7 @@ namespace AspNetCoreOData.Service.Controllers
         }
 
         [ODataRoute]
-        [EnableQuery(PageSize = 20, AllowedQueryOptions= AllowedQueryOptions.All  )]
+        [EnableQuery(PageSize = 20, AllowedQueryOptions= AllowedQueryOptions.All)]
         public IActionResult Get()
         {  
             return Ok(_db.Person.AsQueryable());
