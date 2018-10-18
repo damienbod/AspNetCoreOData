@@ -29,3 +29,7 @@ https://dotnetthoughts.net/getting-started-with-odata-in-aspnet-core/
 ## Links ASP.NET 
 
 https://github.com/damienbod/WebAPIODataV4
+
+## History
+
+2018-10-18 Updated to .NET Core 2.2
