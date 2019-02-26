@@ -32,4 +32,6 @@ https://github.com/damienbod/WebAPIODataV4
 
 ## History
 
+2019-02-26 Updated to latest .NET Core 2.2
+
 2018-10-18 Updated to .NET Core 2.2
