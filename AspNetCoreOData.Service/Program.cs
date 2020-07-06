@@ -59,7 +59,7 @@ namespace AspNetCoreOData.Service
                         .ReadFrom.Configuration(hostingContext.Configuration)
                         .Enrich.FromLogContext()
                         .WriteTo.Console(theme: AnsiConsoleTheme.Code)
-                        .WriteTo.File("../odataService.txt"));
+                        .WriteTo.File("../_odataService.txt"));
                 });
     }
 }
