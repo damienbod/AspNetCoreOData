@@ -57,6 +57,7 @@ namespace StsServerIdentity
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     RequireConsent = true,
+                    RequirePkce = false,
                     AccessTokenLifetime = 86400,
                     RedirectUris = {
                         "https://localhost:44388/signin-oidc"
