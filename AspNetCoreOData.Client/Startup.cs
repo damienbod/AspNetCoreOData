@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace AspNetCoreOData.Client
 {
@@ -33,8 +34,7 @@ namespace AspNetCoreOData.Client
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
             })
-            .AddCookie(options => {
-                })
+            .AddCookie()
             .AddOpenIdConnect(options =>
             {
                 options.SignInScheme = "Cookies";
@@ -49,7 +49,6 @@ namespace AspNetCoreOData.Client
             });
 
             services.AddAuthorization();
-
             services.AddControllersWithViews();
         }
 
@@ -65,6 +64,8 @@ namespace AspNetCoreOData.Client
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 

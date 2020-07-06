@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
+using Serilog;
 
 namespace AspNetCoreOData.Service
 {
@@ -55,6 +56,9 @@ namespace AspNetCoreOData.Service
         {
             app.UseExceptionHandler("/Home/Error");
             app.UseCors("AllowAllOrigins");
+
+            app.UseSerilogRequestLogging();
+
             app.UseStaticFiles();
 
             app.UseRouting();

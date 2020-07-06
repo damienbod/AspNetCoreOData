@@ -25,6 +25,7 @@ using StsServerIdentity.Services.Certificate;
 using Serilog;
 using Microsoft.AspNetCore.Http;
 using Fido2NetLib;
+using Microsoft.IdentityModel.Logging;
 
 namespace StsServerIdentity
 {
@@ -145,6 +146,7 @@ namespace StsServerIdentity
 
         public void Configure(IApplicationBuilder app)
         {
+            IdentityModelEventSource.ShowPII = true;
             app.UseCookiePolicy();
 
             if (_environment.IsDevelopment())

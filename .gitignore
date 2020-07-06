@@ -2,3 +2,6 @@
 /**/bin/
 /**/obj/
 /**/node_modules
+/_odataClient.txt
+/_odataService.txt
+/_sts.txt

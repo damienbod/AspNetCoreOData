@@ -67,7 +67,7 @@ namespace StsServerIdentity
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44388/"
+                        "https://localhost:44388"
                     },
                     AllowedScopes = new List<string>
                     {
