@@ -49,10 +49,10 @@ namespace AspNetCoreOData.Client
 
             services.AddAuthorization();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllersWithViews();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
