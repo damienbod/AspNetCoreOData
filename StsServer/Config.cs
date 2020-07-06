@@ -20,6 +20,14 @@ namespace StsServerIdentity
             };
         }
 
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new List<ApiScope>
+            {
+                new ApiScope("ScopeAspNetCoreODataServiceApi", "OData API AspNetCoreOData.Service")
+            };
+        }
+
         public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>
@@ -31,14 +39,7 @@ namespace StsServerIdentity
                     {
                         new Secret("AspNetCoreODataServiceApiSecret".Sha256())
                     },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "ScopeAspNetCoreODataServiceApi",
-                            DisplayName = "OData API AspNetCoreOData.Service"
-                        }
-                    },
+                    Scopes = { "ScopeAspNetCoreODataServiceApi"},
                     UserClaims = { "role", "admin", "user" }
                 }
             };
@@ -56,6 +57,7 @@ namespace StsServerIdentity
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowOfflineAccess = true,
                     RequireConsent = true,
+                    RequirePkce = false,
                     AccessTokenLifetime = 86400,
                     RedirectUris = {
                         "https://localhost:44388/signin-oidc"
@@ -65,7 +67,7 @@ namespace StsServerIdentity
                     },
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44388/"
+                        "https://localhost:44388"
                     },
                     AllowedScopes = new List<string>
                     {

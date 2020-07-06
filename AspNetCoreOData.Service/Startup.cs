@@ -4,14 +4,12 @@ using AspNetCoreOData.Service.Models;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
+using Serilog;
 
 namespace AspNetCoreOData.Service
 {
@@ -49,29 +47,24 @@ namespace AspNetCoreOData.Service
             services.AddOData();
             services.AddODataQueryFilter();
 
-            services.AddMvc(options => 
-                {
-                  // https://blogs.msdn.microsoft.com/webdev/2018/08/27/asp-net-core-2-2-0-preview1-endpoint-routing/
-                  options.EnableEndpointRouting = false;
-                }
-            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers(mvcOptions =>
+                mvcOptions.EnableEndpointRouting = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
+            app.UseExceptionHandler("/Home/Error");
+            app.UseCors("AllowAllOrigins");
 
-            app.UseHttpsRedirection();
+            app.UseSerilogRequestLogging();
+
+            app.UseStaticFiles();
+
+            app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseMvc(b =>
                    b.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices)
