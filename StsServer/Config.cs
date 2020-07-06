@@ -20,6 +20,14 @@ namespace StsServerIdentity
             };
         }
 
+        public static IEnumerable<ApiScope> GetApiScopes()
+        {
+            return new List<ApiScope>
+            {
+                new ApiScope("ScopeAspNetCoreODataServiceApi", "OData API AspNetCoreOData.Service")
+            };
+        }
+
         public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>
@@ -31,14 +39,7 @@ namespace StsServerIdentity
                     {
                         new Secret("AspNetCoreODataServiceApiSecret".Sha256())
                     },
-                    Scopes =
-                    {
-                        new Scope
-                        {
-                            Name = "ScopeAspNetCoreODataServiceApi",
-                            DisplayName = "OData API AspNetCoreOData.Service"
-                        }
-                    },
+                    Scopes = { "ScopeAspNetCoreODataServiceApi"},
                     UserClaims = { "role", "admin", "user" }
                 }
             };
