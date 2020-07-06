@@ -67,6 +67,8 @@ namespace AspNetCoreOData.Client
 
             app.UseSerilogRequestLogging();
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseAuthentication();
