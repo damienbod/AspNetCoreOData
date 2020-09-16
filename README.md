@@ -32,7 +32,9 @@ https://github.com/damienbod/WebAPIODataV4
 
 ## History
 
-2020-07-06 Updated STS to IdentityServer4 4.0.2 and doet core 3.1
+2020-09-16 Updated STS to IdentityServer4 4.1.0 , nuget packages
+
+2020-07-06 Updated STS to IdentityServer4 4.0.2 and dotnet core 3.1
 
 2019-05-03 Updated packages
 
