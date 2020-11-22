@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -13,6 +14,7 @@ namespace AspNetCoreOData.Service.Database
             BusinessEntityContacts = new HashSet<BusinessEntityContact>();
         }
 
+        [Key]
         public int BusinessEntityId { get; set; }
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
