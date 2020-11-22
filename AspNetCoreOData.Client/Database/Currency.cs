@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class Currency
     {
         public Currency()
         {
-            CountryRegionCurrency = new HashSet<CountryRegionCurrency>();
-            CurrencyRateFromCurrencyCodeNavigation = new HashSet<CurrencyRate>();
-            CurrencyRateToCurrencyCodeNavigation = new HashSet<CurrencyRate>();
+            CountryRegionCurrencies = new HashSet<CountryRegionCurrency>();
+            CurrencyRateFromCurrencyCodeNavigations = new HashSet<CurrencyRate>();
+            CurrencyRateToCurrencyCodeNavigations = new HashSet<CurrencyRate>();
         }
 
         public string CurrencyCode { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrency { get; set; }
-        public virtual ICollection<CurrencyRate> CurrencyRateFromCurrencyCodeNavigation { get; set; }
-        public virtual ICollection<CurrencyRate> CurrencyRateToCurrencyCodeNavigation { get; set; }
+        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
+        public virtual ICollection<CurrencyRate> CurrencyRateFromCurrencyCodeNavigations { get; set; }
+        public virtual ICollection<CurrencyRate> CurrencyRateToCurrencyCodeNavigations { get; set; }
     }
 }

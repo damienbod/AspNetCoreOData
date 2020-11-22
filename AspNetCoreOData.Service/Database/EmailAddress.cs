@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class EmailAddress

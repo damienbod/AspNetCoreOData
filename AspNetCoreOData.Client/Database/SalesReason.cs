@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class SalesReason
     {
         public SalesReason()
         {
-            SalesOrderHeaderSalesReason = new HashSet<SalesOrderHeaderSalesReason>();
+            SalesOrderHeaderSalesReasons = new HashSet<SalesOrderHeaderSalesReason>();
         }
 
         public int SalesReasonId { get; set; }
@@ -15,6 +17,6 @@ namespace AspNetCoreOData.Service.Database
         public string ReasonType { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; }
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
     }
 }

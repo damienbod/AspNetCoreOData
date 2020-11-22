@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class WorkOrder
     {
         public WorkOrder()
         {
-            WorkOrderRouting = new HashSet<WorkOrderRouting>();
+            WorkOrderRoutings = new HashSet<WorkOrderRouting>();
         }
 
         public int WorkOrderId { get; set; }
@@ -23,6 +25,6 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual Product Product { get; set; }
         public virtual ScrapReason ScrapReason { get; set; }
-        public virtual ICollection<WorkOrderRouting> WorkOrderRouting { get; set; }
+        public virtual ICollection<WorkOrderRouting> WorkOrderRoutings { get; set; }
     }
 }

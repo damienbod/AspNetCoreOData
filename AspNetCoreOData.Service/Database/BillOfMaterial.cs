@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
-    public partial class BillOfMaterials
+    public partial class BillOfMaterial
     {
         public int BillOfMaterialsId { get; set; }
         public int? ProductAssemblyId { get; set; }

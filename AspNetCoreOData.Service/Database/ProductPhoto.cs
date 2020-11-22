@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class ProductPhoto
     {
         public ProductPhoto()
         {
-            ProductProductPhoto = new HashSet<ProductProductPhoto>();
+            ProductProductPhotos = new HashSet<ProductProductPhoto>();
         }
 
         public int ProductPhotoId { get; set; }
@@ -17,6 +19,6 @@ namespace AspNetCoreOData.Service.Database
         public string LargePhotoFileName { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; }
+        public virtual ICollection<ProductProductPhoto> ProductProductPhotos { get; set; }
     }
 }

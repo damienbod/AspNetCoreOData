@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class ProductProductPhoto

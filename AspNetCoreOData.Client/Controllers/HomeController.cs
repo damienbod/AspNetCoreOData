@@ -23,7 +23,7 @@ namespace AspNetCoreOData.Client.Controllers
             //var client = new ODataClient("https://localhost:44345/odata");
 
             var persons = await client.For<Person>()
-                    .Expand(rr => rr.EmailAddress)
+                    .Expand(rr => rr.EmailAddresses)
                     .Top(7).Skip(7)
                     .FindEntriesAsync();
 

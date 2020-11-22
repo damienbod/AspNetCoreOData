@@ -26,14 +26,14 @@ namespace  AspNetCoreOData.Service.Controllers
         [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
         public IActionResult Get()
         {
-            return Ok(_db.ContactType.AsQueryable());
+            return Ok(_db.ContactTypes.AsQueryable());
         }
 
         [ODataRoute()]
         [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
         public IActionResult Get([FromODataUri] int key)
         {
-            return Ok(_db.ContactType.Find(key));
+            return Ok(_db.ContactTypes.Find(key));
         }
 
         [ODataRoute()]
@@ -46,7 +46,7 @@ namespace  AspNetCoreOData.Service.Controllers
                 return BadRequest(ModelState);
             }
 
-            _db.ContactType.AddOrUpdate(contactType);
+            _db.ContactTypes.AddOrUpdate(contactType);
             _db.SaveChanges();
             return Created(contactType);
         }
@@ -67,7 +67,7 @@ namespace  AspNetCoreOData.Service.Controllers
                 return BadRequest();
             }
 
-            _db.ContactType.AddOrUpdate(contactType);
+            _db.ContactTypes.AddOrUpdate(contactType);
             _db.SaveChanges();
 
             return Updated(contactType);
@@ -78,8 +78,8 @@ namespace  AspNetCoreOData.Service.Controllers
         [EnableQuery(AllowedQueryOptions = AllowedQueryOptions.All)]
         public IActionResult Delete([FromODataUri] int key)
         {
-            var entityInDb = _db.ContactType.SingleOrDefault(t => t.ContactTypeId == key);
-            _db.ContactType.Remove(entityInDb);
+            var entityInDb = _db.ContactTypes.SingleOrDefault(t => t.ContactTypeId == key);
+            _db.ContactTypes.Remove(entityInDb);
             _db.SaveChanges();
 
             return NoContent();
@@ -95,7 +95,7 @@ namespace  AspNetCoreOData.Service.Controllers
                 return BadRequest(ModelState);
             }
 
-            var contactType = _db.ContactType.Single(t => t.ContactTypeId == key);
+            var contactType = _db.ContactTypes.Single(t => t.ContactTypeId == key);
             delta.Patch(contactType);
             _db.SaveChanges();
             return Updated(contactType);

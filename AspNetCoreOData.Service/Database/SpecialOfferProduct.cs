@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class SpecialOfferProduct
     {
         public SpecialOfferProduct()
         {
-            SalesOrderDetail = new HashSet<SalesOrderDetail>();
+            SalesOrderDetails = new HashSet<SalesOrderDetail>();
         }
 
         public int SpecialOfferId { get; set; }
@@ -17,6 +19,6 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual Product Product { get; set; }
         public virtual SpecialOffer SpecialOffer { get; set; }
-        public virtual ICollection<SalesOrderDetail> SalesOrderDetail { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
     }
 }

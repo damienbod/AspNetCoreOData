@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AspNetCoreOData.Service.Database
 {
@@ -7,13 +10,14 @@ namespace AspNetCoreOData.Service.Database
     {
         public ContactType()
         {
-            BusinessEntityContact = new HashSet<BusinessEntityContact>();
+            BusinessEntityContacts = new HashSet<BusinessEntityContact>();
         }
 
+        [Key]
         public int ContactTypeId { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
+        public virtual ICollection<BusinessEntityContact> BusinessEntityContacts { get; set; }
     }
 }

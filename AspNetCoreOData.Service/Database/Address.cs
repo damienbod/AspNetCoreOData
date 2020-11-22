@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+#nullable disable
 
 namespace AspNetCoreOData.Service.Database
 {
@@ -7,11 +10,12 @@ namespace AspNetCoreOData.Service.Database
     {
         public Address()
         {
-            BusinessEntityAddress = new HashSet<BusinessEntityAddress>();
-            SalesOrderHeaderBillToAddress = new HashSet<SalesOrderHeader>();
-            SalesOrderHeaderShipToAddress = new HashSet<SalesOrderHeader>();
+            BusinessEntityAddresses = new HashSet<BusinessEntityAddress>();
+            SalesOrderHeaderBillToAddresses = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaderShipToAddresses = new HashSet<SalesOrderHeader>();
         }
 
+        [Key]
         public int AddressId { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -22,8 +26,8 @@ namespace AspNetCoreOData.Service.Database
         public DateTime ModifiedDate { get; set; }
 
         public virtual StateProvince StateProvince { get; set; }
-        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderShipToAddress { get; set; }
+        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddresses { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderShipToAddresses { get; set; }
     }
 }

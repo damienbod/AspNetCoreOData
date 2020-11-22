@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class Person
     {
         public Person()
         {
-            BusinessEntityContact = new HashSet<BusinessEntityContact>();
-            Customer = new HashSet<Customer>();
-            EmailAddress = new HashSet<EmailAddress>();
-            PersonCreditCard = new HashSet<PersonCreditCard>();
-            PersonPhone = new HashSet<PersonPhone>();
+            BusinessEntityContacts = new HashSet<BusinessEntityContact>();
+            Customers = new HashSet<Customer>();
+            EmailAddresses = new HashSet<EmailAddress>();
+            PersonCreditCards = new HashSet<PersonCreditCard>();
+            PersonPhones = new HashSet<PersonPhone>();
         }
 
         [Key]
@@ -33,10 +35,10 @@ namespace AspNetCoreOData.Service.Database
         public virtual BusinessEntity BusinessEntity { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Password Password { get; set; }
-        public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
-        public virtual ICollection<Customer> Customer { get; set; }
-        public virtual ICollection<EmailAddress> EmailAddress { get; set; }
-        public virtual ICollection<PersonCreditCard> PersonCreditCard { get; set; }
-        public virtual ICollection<PersonPhone> PersonPhone { get; set; }
+        public virtual ICollection<BusinessEntityContact> BusinessEntityContacts { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<EmailAddress> EmailAddresses { get; set; }
+        public virtual ICollection<PersonCreditCard> PersonCreditCards { get; set; }
+        public virtual ICollection<PersonPhone> PersonPhones { get; set; }
     }
 }

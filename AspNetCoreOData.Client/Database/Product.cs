@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class Product
     {
         public Product()
         {
-            BillOfMaterialsComponent = new HashSet<BillOfMaterials>();
-            BillOfMaterialsProductAssembly = new HashSet<BillOfMaterials>();
-            ProductCostHistory = new HashSet<ProductCostHistory>();
-            ProductInventory = new HashSet<ProductInventory>();
-            ProductListPriceHistory = new HashSet<ProductListPriceHistory>();
-            ProductProductPhoto = new HashSet<ProductProductPhoto>();
-            ProductReview = new HashSet<ProductReview>();
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
-            ShoppingCartItem = new HashSet<ShoppingCartItem>();
-            SpecialOfferProduct = new HashSet<SpecialOfferProduct>();
-            TransactionHistory = new HashSet<TransactionHistory>();
-            WorkOrder = new HashSet<WorkOrder>();
+            BillOfMaterialComponents = new HashSet<BillOfMaterial>();
+            BillOfMaterialProductAssemblies = new HashSet<BillOfMaterial>();
+            ProductCostHistories = new HashSet<ProductCostHistory>();
+            ProductInventories = new HashSet<ProductInventory>();
+            ProductListPriceHistories = new HashSet<ProductListPriceHistory>();
+            ProductProductPhotos = new HashSet<ProductProductPhoto>();
+            ProductReviews = new HashSet<ProductReview>();
+            ProductVendors = new HashSet<ProductVendor>();
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            ShoppingCartItems = new HashSet<ShoppingCartItem>();
+            SpecialOfferProducts = new HashSet<SpecialOfferProduct>();
+            TransactionHistories = new HashSet<TransactionHistory>();
+            WorkOrders = new HashSet<WorkOrder>();
         }
 
         public int ProductId { get; set; }
@@ -52,18 +54,18 @@ namespace AspNetCoreOData.Service.Database
         public virtual ProductSubcategory ProductSubcategory { get; set; }
         public virtual UnitMeasure SizeUnitMeasureCodeNavigation { get; set; }
         public virtual UnitMeasure WeightUnitMeasureCodeNavigation { get; set; }
-        public virtual ICollection<BillOfMaterials> BillOfMaterialsComponent { get; set; }
-        public virtual ICollection<BillOfMaterials> BillOfMaterialsProductAssembly { get; set; }
-        public virtual ICollection<ProductCostHistory> ProductCostHistory { get; set; }
-        public virtual ICollection<ProductInventory> ProductInventory { get; set; }
-        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistory { get; set; }
-        public virtual ICollection<ProductProductPhoto> ProductProductPhoto { get; set; }
-        public virtual ICollection<ProductReview> ProductReview { get; set; }
-        public virtual ICollection<ProductVendor> ProductVendor { get; set; }
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
-        public virtual ICollection<ShoppingCartItem> ShoppingCartItem { get; set; }
-        public virtual ICollection<SpecialOfferProduct> SpecialOfferProduct { get; set; }
-        public virtual ICollection<TransactionHistory> TransactionHistory { get; set; }
-        public virtual ICollection<WorkOrder> WorkOrder { get; set; }
+        public virtual ICollection<BillOfMaterial> BillOfMaterialComponents { get; set; }
+        public virtual ICollection<BillOfMaterial> BillOfMaterialProductAssemblies { get; set; }
+        public virtual ICollection<ProductCostHistory> ProductCostHistories { get; set; }
+        public virtual ICollection<ProductInventory> ProductInventories { get; set; }
+        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistories { get; set; }
+        public virtual ICollection<ProductProductPhoto> ProductProductPhotos { get; set; }
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
+        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public virtual ICollection<SpecialOfferProduct> SpecialOfferProducts { get; set; }
+        public virtual ICollection<TransactionHistory> TransactionHistories { get; set; }
+        public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

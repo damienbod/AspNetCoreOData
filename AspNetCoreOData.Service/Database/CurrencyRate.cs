@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace AspNetCoreOData.Service.Database
 {
     public partial class CurrencyRate
     {
         public CurrencyRate()
         {
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int CurrencyRateId { get; set; }
@@ -20,6 +22,6 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual Currency FromCurrencyCodeNavigation { get; set; }
         public virtual Currency ToCurrencyCodeNavigation { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }
