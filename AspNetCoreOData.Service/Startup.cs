@@ -47,8 +47,10 @@ namespace AspNetCoreOData.Service
             services.AddOData();
             services.AddODataQueryFilter();
 
-            services.AddControllers(mvcOptions =>
-                mvcOptions.EnableEndpointRouting = false);
+            services.AddControllers(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,9 +68,11 @@ namespace AspNetCoreOData.Service
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseMvc(b =>
-                   b.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices)
-            ));
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapODataRoute("odata", "odata", GetEdmModel(app.ApplicationServices));
+            });
         }
 
         private static IEdmModel GetEdmModel(IServiceProvider serviceProvider)
