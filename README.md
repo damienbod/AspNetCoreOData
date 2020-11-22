@@ -32,6 +32,8 @@ https://github.com/damienbod/WebAPIODataV4
 
 ## History
 
+2020-11-22 Updated to .NET 5, EF Core 5, updated scaffolded model
+
 2020-09-16 Updated STS to IdentityServer4 4.1.0 , nuget packages
 
 2020-07-06 Updated STS to IdentityServer4 4.0.2 and dotnet core 3.1
