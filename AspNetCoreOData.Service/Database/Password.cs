@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Password
     {
-        [Key]
         public int BusinessEntityId { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }

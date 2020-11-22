@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class CreditCard
     {
         public CreditCard()
         {
-            PersonCreditCard = new HashSet<PersonCreditCard>();
-            SalesOrderHeader = new HashSet<SalesOrderHeader>();
+            PersonCreditCards = new HashSet<PersonCreditCard>();
+            SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
 
         public int CreditCardId { get; set; }
@@ -18,7 +20,7 @@ namespace AspNetCoreOData.Service.Database
         public short ExpYear { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<PersonCreditCard> PersonCreditCard { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeader { get; set; }
+        public virtual ICollection<PersonCreditCard> PersonCreditCards { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
     }
 }

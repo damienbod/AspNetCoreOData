@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class ProductInventory
     {

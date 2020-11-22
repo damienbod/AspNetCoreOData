@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Location
     {
         public Location()
         {
-            ProductInventory = new HashSet<ProductInventory>();
-            WorkOrderRouting = new HashSet<WorkOrderRouting>();
+            ProductInventories = new HashSet<ProductInventory>();
+            WorkOrderRoutings = new HashSet<WorkOrderRouting>();
         }
 
         public short LocationId { get; set; }
@@ -17,7 +19,7 @@ namespace AspNetCoreOData.Service.Database
         public decimal Availability { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductInventory> ProductInventory { get; set; }
-        public virtual ICollection<WorkOrderRouting> WorkOrderRouting { get; set; }
+        public virtual ICollection<ProductInventory> ProductInventories { get; set; }
+        public virtual ICollection<WorkOrderRouting> WorkOrderRoutings { get; set; }
     }
 }

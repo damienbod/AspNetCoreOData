@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class ContactType
     {
         public ContactType()
         {
-            BusinessEntityContact = new HashSet<BusinessEntityContact>();
+            BusinessEntityContacts = new HashSet<BusinessEntityContact>();
         }
 
         public int ContactTypeId { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
+        public virtual ICollection<BusinessEntityContact> BusinessEntityContacts { get; set; }
     }
 }

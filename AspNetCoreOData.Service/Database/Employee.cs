@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Employee
     {
         public Employee()
         {
-            EmployeeDepartmentHistory = new HashSet<EmployeeDepartmentHistory>();
-            EmployeePayHistory = new HashSet<EmployeePayHistory>();
-            JobCandidate = new HashSet<JobCandidate>();
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
+            EmployeeDepartmentHistories = new HashSet<EmployeeDepartmentHistory>();
+            EmployeePayHistories = new HashSet<EmployeePayHistory>();
+            JobCandidates = new HashSet<JobCandidate>();
+            PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -31,9 +33,9 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual Person BusinessEntity { get; set; }
         public virtual SalesPerson SalesPerson { get; set; }
-        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistory { get; set; }
-        public virtual ICollection<EmployeePayHistory> EmployeePayHistory { get; set; }
-        public virtual ICollection<JobCandidate> JobCandidate { get; set; }
-        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
+        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
+        public virtual ICollection<EmployeePayHistory> EmployeePayHistories { get; set; }
+        public virtual ICollection<JobCandidate> JobCandidates { get; set; }
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
     }
 }

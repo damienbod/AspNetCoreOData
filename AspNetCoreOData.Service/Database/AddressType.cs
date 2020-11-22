@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class AddressType
     {
         public AddressType()
         {
-            BusinessEntityAddress = new HashSet<BusinessEntityAddress>();
+            BusinessEntityAddresses = new HashSet<BusinessEntityAddress>();
         }
 
         public int AddressTypeId { get; set; }
@@ -15,6 +17,6 @@ namespace AspNetCoreOData.Service.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
+        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
     }
 }

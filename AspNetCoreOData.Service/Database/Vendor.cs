@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Vendor
     {
         public Vendor()
         {
-            ProductVendor = new HashSet<ProductVendor>();
-            PurchaseOrderHeader = new HashSet<PurchaseOrderHeader>();
+            ProductVendors = new HashSet<ProductVendor>();
+            PurchaseOrderHeaders = new HashSet<PurchaseOrderHeader>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -21,7 +23,7 @@ namespace AspNetCoreOData.Service.Database
         public DateTime ModifiedDate { get; set; }
 
         public virtual BusinessEntity BusinessEntity { get; set; }
-        public virtual ICollection<ProductVendor> ProductVendor { get; set; }
-        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeader { get; set; }
+        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+        public virtual ICollection<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
     }
 }

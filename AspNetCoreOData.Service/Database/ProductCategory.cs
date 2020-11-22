@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class ProductCategory
     {
         public ProductCategory()
         {
-            ProductSubcategory = new HashSet<ProductSubcategory>();
+            ProductSubcategories = new HashSet<ProductSubcategory>();
         }
 
         public int ProductCategoryId { get; set; }
@@ -15,6 +17,6 @@ namespace AspNetCoreOData.Service.Database
         public Guid Rowguid { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductSubcategory> ProductSubcategory { get; set; }
+        public virtual ICollection<ProductSubcategory> ProductSubcategories { get; set; }
     }
 }

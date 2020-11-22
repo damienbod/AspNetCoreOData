@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Store
     {
         public Store()
         {
-            Customer = new HashSet<Customer>();
+            Customers = new HashSet<Customer>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -19,6 +21,6 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual BusinessEntity BusinessEntity { get; set; }
         public virtual SalesPerson SalesPerson { get; set; }
-        public virtual ICollection<Customer> Customer { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

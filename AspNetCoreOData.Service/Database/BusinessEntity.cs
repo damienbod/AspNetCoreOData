@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class BusinessEntity
     {
         public BusinessEntity()
         {
-            BusinessEntityAddress = new HashSet<BusinessEntityAddress>();
-            BusinessEntityContact = new HashSet<BusinessEntityContact>();
+            BusinessEntityAddresses = new HashSet<BusinessEntityAddress>();
+            BusinessEntityContacts = new HashSet<BusinessEntityContact>();
         }
 
         public int BusinessEntityId { get; set; }
@@ -18,7 +20,7 @@ namespace AspNetCoreOData.Service.Database
         public virtual Person Person { get; set; }
         public virtual Store Store { get; set; }
         public virtual Vendor Vendor { get; set; }
-        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
-        public virtual ICollection<BusinessEntityContact> BusinessEntityContact { get; set; }
+        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+        public virtual ICollection<BusinessEntityContact> BusinessEntityContacts { get; set; }
     }
 }

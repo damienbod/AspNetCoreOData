@@ -1,14 +1,14 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class PersonPhone
     {
-        [Key]
         public int BusinessEntityId { get; set; }
         public string PhoneNumber { get; set; }
-        [Key]
         public int PhoneNumberTypeId { get; set; }
         public DateTime ModifiedDate { get; set; }
 

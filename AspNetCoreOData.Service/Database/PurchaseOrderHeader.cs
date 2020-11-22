@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class PurchaseOrderHeader
     {
         public PurchaseOrderHeader()
         {
-            PurchaseOrderDetail = new HashSet<PurchaseOrderDetail>();
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
 
         public int PurchaseOrderId { get; set; }
@@ -27,6 +29,6 @@ namespace AspNetCoreOData.Service.Database
         public virtual Employee Employee { get; set; }
         public virtual ShipMethod ShipMethod { get; set; }
         public virtual Vendor Vendor { get; set; }
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetail { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
     }
 }

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class StateProvince
     {
         public StateProvince()
         {
-            Address = new HashSet<Address>();
-            SalesTaxRate = new HashSet<SalesTaxRate>();
+            Addresses = new HashSet<Address>();
+            SalesTaxRates = new HashSet<SalesTaxRate>();
         }
 
         public int StateProvinceId { get; set; }
@@ -22,7 +24,7 @@ namespace AspNetCoreOData.Service.Database
 
         public virtual CountryRegion CountryRegionCodeNavigation { get; set; }
         public virtual SalesTerritory Territory { get; set; }
-        public virtual ICollection<Address> Address { get; set; }
-        public virtual ICollection<SalesTaxRate> SalesTaxRate { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<SalesTaxRate> SalesTaxRates { get; set; }
     }
 }

@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Illustration
     {
         public Illustration()
         {
-            ProductModelIllustration = new HashSet<ProductModelIllustration>();
+            ProductModelIllustrations = new HashSet<ProductModelIllustration>();
         }
 
         public int IllustrationId { get; set; }
         public string Diagram { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public virtual ICollection<ProductModelIllustration> ProductModelIllustration { get; set; }
+        public virtual ICollection<ProductModelIllustration> ProductModelIllustrations { get; set; }
     }
 }

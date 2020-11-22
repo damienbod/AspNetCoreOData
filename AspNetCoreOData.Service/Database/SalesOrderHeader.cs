@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class SalesOrderHeader
     {
         public SalesOrderHeader()
         {
-            SalesOrderDetail = new HashSet<SalesOrderDetail>();
-            SalesOrderHeaderSalesReason = new HashSet<SalesOrderHeaderSalesReason>();
+            SalesOrderDetails = new HashSet<SalesOrderDetail>();
+            SalesOrderHeaderSalesReasons = new HashSet<SalesOrderHeaderSalesReason>();
         }
 
         public int SalesOrderId { get; set; }
@@ -46,7 +48,7 @@ namespace AspNetCoreOData.Service.Database
         public virtual ShipMethod ShipMethod { get; set; }
         public virtual Address ShipToAddress { get; set; }
         public virtual SalesTerritory Territory { get; set; }
-        public virtual ICollection<SalesOrderDetail> SalesOrderDetail { get; set; }
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReason { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
     }
 }

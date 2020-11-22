@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AspNetCoreOData.Service.Database
+#nullable disable
+
+namespace DataAccess.Database
 {
     public partial class Address
     {
         public Address()
         {
-            BusinessEntityAddress = new HashSet<BusinessEntityAddress>();
-            SalesOrderHeaderBillToAddress = new HashSet<SalesOrderHeader>();
-            SalesOrderHeaderShipToAddress = new HashSet<SalesOrderHeader>();
+            BusinessEntityAddresses = new HashSet<BusinessEntityAddress>();
+            SalesOrderHeaderBillToAddresses = new HashSet<SalesOrderHeader>();
+            SalesOrderHeaderShipToAddresses = new HashSet<SalesOrderHeader>();
         }
 
         public int AddressId { get; set; }
@@ -22,8 +24,8 @@ namespace AspNetCoreOData.Service.Database
         public DateTime ModifiedDate { get; set; }
 
         public virtual StateProvince StateProvince { get; set; }
-        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddress { get; set; }
-        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderShipToAddress { get; set; }
+        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddresses { get; set; }
+        public virtual ICollection<SalesOrderHeader> SalesOrderHeaderShipToAddresses { get; set; }
     }
 }
