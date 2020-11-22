@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,6 +15,7 @@ namespace AspNetCoreOData.Service.Database
             SalesOrderHeaderShipToAddresses = new HashSet<SalesOrderHeader>();
         }
 
+        [Key]
         public int AddressId { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
