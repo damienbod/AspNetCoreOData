@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,6 +15,7 @@ namespace AspNetCoreOData.Service.Database
             StateProvinces = new HashSet<StateProvince>();
         }
 
+        [Key]
         public string CountryRegionCode { get; set; }
         public string Name { get; set; }
         public DateTime ModifiedDate { get; set; }
