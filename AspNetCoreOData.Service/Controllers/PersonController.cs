@@ -11,7 +11,7 @@ namespace AspNetCoreOData.Service.Controllers
 {
     // This is removed so that the demo service works in the browser without authorization. Not recommended
     //[Authorize(Policy = "ODataServiceApiPolicy", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    //[ODataRoutePrefix("Person")]
+    [ODataRoutePrefix("Person")]
     public class PersonController : ODataController
     {
         private AdventureWorks2016Context _db;
