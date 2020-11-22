@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DataAccess.Database
+namespace AspNetCoreOData.Service.Database
 {
     public partial class Location
     {

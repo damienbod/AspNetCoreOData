@@ -20,13 +20,13 @@ namespace AspNetCoreOData.Service.Controllers
         [EnableQuery(PageSize = 20)]
         public IActionResult Get()
         {
-            return Ok(_db.AddressType.AsQueryable());
+            return Ok(_db.AddressTypes.AsQueryable());
         }
 
         [EnableQuery(PageSize = 20)]
         public IActionResult Get([FromODataUri] int key)
         {
-            return Ok(_db.AddressType.Find(key));
+            return Ok(_db.AddressTypes.Find(key));
         }
     }
 }

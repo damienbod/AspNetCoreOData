@@ -25,14 +25,14 @@ namespace AspNetCoreOData.Service.Controllers
         [EnableQuery(PageSize = 20, AllowedQueryOptions= AllowedQueryOptions.All)]
         public IActionResult Get()
         {  
-            return Ok(_db.Person.AsQueryable());
+            return Ok(_db.People.AsQueryable());
         }
 
         [ODataRoute("({key})")]
         [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
         public IActionResult Get([FromODataUri] int key)
         {
-            return Ok(_db.Person.Find(key));
+            return Ok(_db.People.Find(key));
         }
 
         [EnableQuery(PageSize = 20, AllowedQueryOptions = AllowedQueryOptions.All)]
@@ -40,7 +40,7 @@ namespace AspNetCoreOData.Service.Controllers
         [HttpGet]
         public IActionResult MyFirstFunction()
         {
-            return Ok(_db.Person.Where(t => t.FirstName.StartsWith("K")));
+            return Ok(_db.People.Where(t => t.FirstName.StartsWith("K")));
         }
 
  

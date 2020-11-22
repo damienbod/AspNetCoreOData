@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace DataAccess.Database
+namespace AspNetCoreOData.Service.Database
 {
     public partial class AdventureWorks2016Context : DbContext
     {

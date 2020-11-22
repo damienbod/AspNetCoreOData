@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace DataAccess.Database
+namespace AspNetCoreOData.Service.Database
 {
     public partial class Person
     {
@@ -16,6 +17,7 @@ namespace DataAccess.Database
             PersonPhones = new HashSet<PersonPhone>();
         }
 
+        [Key]
         public int BusinessEntityId { get; set; }
         public string PersonType { get; set; }
         public bool NameStyle { get; set; }
